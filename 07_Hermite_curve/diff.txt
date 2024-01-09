@@ -1,0 +1,132 @@
+Comparing files Source.cpp and SOURCE_OLD.CPP
+***** Source.cpp
+
+std::vector<glm::vec3> linePoints;
+
+***** SOURCE_OLD.CPP
+
+//std::vector<glm::vec3> linePoints;
+
+*****
+
+***** Source.cpp
+{
+
+}
+***** SOURCE_OLD.CPP
+{
+}
+*****
+
+***** Source.cpp
+{
+
+}
+***** SOURCE_OLD.CPP
+{
+}
+*****
+
+***** Source.cpp
+{
+
+}
+***** SOURCE_OLD.CPP
+{
+}
+*****
+
+***** Source.cpp
+        M = glm::mat4x4(
+                glm::vec4(0, 0, 0, 1), // a mátrix elsõ oszlopának elemei
+                glm::vec4(1, 1, 1, 1), // a mátrix második oszlopának elemei
+                glm::vec4(0, 0, 1, 0), // ...
+                glm::vec4(3, 2, 1, 0)
+        );
+
+        M_inv = glm::inverse(M); // a mátrix invertálása.
+
+***** SOURCE_OLD.CPP
+        M = glm::mat4x4(
+                glm::vec4(0, 0, 0, 1),
+                glm::vec4(1, 1, 1, 1),
+                glm::vec4(0, 0, 1, 0),
+                glm::vec4(3, 2, 1, 0)
+                );
+
+        M_inv = glm::inverse(glm::transpose(M)); // mivel itt soronként vettem fel, amit oszloponként kellene ...
+        // ezért transzponáltat is számolok, majd ezt invertálom.
+
+*****
+
+***** Source.cpp
+        //Ezzel meglehet nézni milyen elemek kerültek a glm::mat4 vagy glm::vec4 adatszerkezetünkbe.
+        //cout << glm::to_string(M_inv) << endl;
+
+***** SOURCE_OLD.CPP
+        //Ezzel meglehet nézni milyen elemek kerültek a glm::mat4 vagy glm::vec4 adatszerkezetünkbe.
+        //cout << glm::to_string(glm::transpose(glm::inverse(M))) << endl;
+
+*****
+
+***** Source.cpp
+        {
+                T = glm::vec4(t * t * t, t * t, t, 1); // oszlopvektornak tekinthetõ
+
+                MxT = M_inv * T;
+
+                nextPoint.x = kezdoPont.x * MxT[0] + vegPont.x * MxT[1] + kezdopontbeliErinto.x * MxT[2] + vegpontbeliErinto.x 
+* MxT[3];
+                nextPoint.y = kezdoPont.y * MxT[0] + vegPont.y * MxT[1] + kezdopontbeliErinto.y * MxT[2] + vegpontbeliErinto.y 
+* MxT[3];
+                nextPoint.z = 0.0f;
+
+***** SOURCE_OLD.CPP
+        {
+                T = glm::vec4(t * t * t, t * t, t, 1);
+
+                MxT = T * M_inv;
+
+                for (int i = 0; i < 4; i++)
+                {
+                        nextPoint.x = MxT[0] * kezdoPont.x + MxT[1] * vegPont.x + MxT[2] * kezdopontbeliErinto.x + MxT[3] * veg
+pontbeliErinto.x;
+                        nextPoint.y = MxT[0] * kezdoPont.y + MxT[1] * vegPont.y + MxT[2] * kezdopontbeliErinto.y + MxT[3] * veg
+pontbeliErinto.y;
+                        nextPoint.z = 0.0f;
+                }
+
+*****
+
+***** Source.cpp
+
+        generateHermiteCurve(glm::vec2(-0.5f, 0.0f), glm::vec2(0.5, 0.0f),
+                glm::vec2(0.0f, 4.0f), glm::vec2(0.0f, 4.0f));
+
+***** SOURCE_OLD.CPP
+
+        generateHermiteCurve(glm::vec2(-0.5f, -0.5f), glm::vec2(0.75, 0.75f),
+                glm::vec2(0.0f, 4.0f), glm::vec2(1.0f, 0.0f));
+
+*****
+
+***** Source.cpp
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+}
+***** SOURCE_OLD.CPP
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+*****
+
+***** Source.cpp
+        glPointSize(30.0f);
+        glDrawArrays(GL_LINE_STRIP, 0, pointToDraw.size());
+
+***** SOURCE_OLD.CPP
+        glPointSize(30.0f);
+//      glDrawArrays(GL_LINE_STRIP, 0, pointToDraw.size());
+        glDrawArrays(GL_POINTS, 0, pointToDraw.size());
+
+*****
+

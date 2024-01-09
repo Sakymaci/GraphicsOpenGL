@@ -1,0 +1,16 @@
+﻿  Source.cpp
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(31,21): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(32,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(34,22): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(35,21): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(47,31): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(48,35): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(167,24): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(168,24): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(171,26): warning C4305: '+=': truncation from 'double' to 'float'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(172,26): warning C4305: '+=': truncation from 'double' to 'float'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(175,26): warning C4305: '-=': truncation from 'double' to 'float'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(176,26): warning C4305: '-=': truncation from 'double' to 'float'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(212,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+D:\egyetem\20220201_Computer_graphics\02_primitives\Source.cpp(237,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  02_primitives.vcxproj -> D:\egyetem\20220201_Computer_graphics\x64\Debug\02_primitives.exe

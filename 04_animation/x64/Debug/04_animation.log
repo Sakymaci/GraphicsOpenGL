@@ -1,0 +1,5 @@
+﻿  Source.cpp
+D:\egyetem\20220201_Computer_graphics\04_animation\Source.cpp(215,36): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\egyetem\20220201_Computer_graphics\04_animation\Source.cpp(281,33): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+D:\egyetem\20220201_Computer_graphics\04_animation\Source.cpp(301,54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  04_animation.vcxproj -> D:\egyetem\20220201_Computer_graphics\x64\Debug\04_animation.exe
