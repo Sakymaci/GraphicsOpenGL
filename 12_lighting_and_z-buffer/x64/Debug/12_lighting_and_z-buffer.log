@@ -1,0 +1,8 @@
+﻿  Source.cpp
+D:\egyetem\20220201_Computer_graphics\12_lighting_and_z-buffer\Source.cpp(570,15): warning C4805: '==': unsafe mix of type 'GLboolean' and type 'bool' in operation
+glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(input.obj)' or at 'D:\egyetem\20220201_Computer_graphics\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'D:\egyetem\20220201_Computer_graphics\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(window.obj)' or at 'D:\egyetem\20220201_Computer_graphics\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'D:\egyetem\20220201_Computer_graphics\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'D:\egyetem\20220201_Computer_graphics\x64\Debug\glfw.pdb'; linking object as if no debug info
+  12_lighting_and_z-buffer.vcxproj -> D:\egyetem\20220201_Computer_graphics\x64\Debug\12_lighting_and_Z_buffer.exe

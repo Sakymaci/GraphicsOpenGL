@@ -1,0 +1,254 @@
+Comparing files old.cpp and SOURCE.CPP
+***** old.cpp
+#include <glm/gtc/type_ptr.hpp>
+
+***** SOURCE.CPP
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/matrix_inverse.hpp>
+
+*****
+
+***** old.cpp
+float vertices[] = {
+        // positions              // color                   //normals
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+                 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+                 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+                -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+
+                -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+                 0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+                -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+                -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+
+                -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+                -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+                -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+                 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f, 0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f, 0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f, 0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f, 0.0f, -1.0f,  0.0f,
+                -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0.0f, -1.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 0.0f, 0.0f, -1.0f,  0.0f,
+
+                -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+                -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+                -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f
+
+***** SOURCE.CPP
+float vertices[] = {
+        // positions              //normals
+                -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+                 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+                 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+                 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+                -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+
+                -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+                 0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+                 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+                 0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+                -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+                -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
+
+                -0.5f,  0.5f,  0.5f,  -1.0f,  0.0f,  0.0f,
+                -0.5f,  0.5f, -0.5f,  -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  -1.0f,  0.0f,  0.0f,
+                -0.5f, -0.5f,  0.5f,  -1.0f,  0.0f,  0.0f,
+                -0.5f,  0.5f,  0.5f,  -1.0f,  0.0f,  0.0f,
+
+                 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+                 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+
+                -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+                 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+                -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+                -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+
+                -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+                 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+                -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+                -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+
+*****
+
+***** old.cpp
+glm::mat4 model, view, projection;
+
+***** SOURCE.CPP
+glm::mat4 model, view, projection;
+glm::mat4 invTmatrix;
+
+*****
+
+***** old.cpp
+/* Vegyük fel a kamera pozicót tároló változót, illetve a tengelyekhezz szükséges vektorokat. */
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f), cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f), up = glm::vec3(0.0f, 1.0f, 0.0f)
+,
+cameraMoving = glm::vec3(0.0, 0.0, -1.0);
+
+glm::vec3 lightPos(0.0f, 0.0f, 2.0f);
+
+***** SOURCE.CPP
+/* Vegyük fel a kamera pozicót tároló változót, illetve a tengelyekhezz szükséges vektorokat. */
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 2.0f), cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f), up = glm::vec3(0.0f, 1.0f, 0.0f)
+,
+cameraMovingX = glm::vec3(-1.0f, 0.0f, 0.0f), cameraMovingY = glm::vec3(0.0f, 1.0f, 0.0f);
+
+glm::vec3 lightPos(cameraPos);
+
+*****
+
+***** old.cpp
+{
+        float cameraSpeed = 2.5f * deltaTime;
+
+***** SOURCE.CPP
+{
+        float cameraSpeed = 5.0f * deltaTime;
+
+*****
+
+***** old.cpp
+                /* A kamera számára számítsuk ki az elõre mutató irányt .*/
+                cameraPos += cameraSpeed * cameraMoving;
+        }
+***** SOURCE.CPP
+                /* A kamera számára számítsuk ki az elõre mutató irányt .*/
+                cameraPos += cameraSpeed * cameraMovingY;
+                lightPos = cameraPos;
+        }
+*****
+
+***** old.cpp
+        {
+                cameraPos -= cameraSpeed * cameraMoving;
+        }
+***** SOURCE.CPP
+        {
+                cameraPos -= cameraSpeed * cameraMovingY;
+                lightPos = cameraPos;
+        }
+*****
+
+***** old.cpp
+        {
+                /* A kamera számára számítsuk ki a jobbra mutató irányt .*/
+                cameraPos -= cameraSpeed * glm::normalize(glm::cross(cameraMoving, up));
+        }
+***** SOURCE.CPP
+        {
+                cameraPos += cameraSpeed * cameraMovingX;
+                lightPos = cameraPos;
+        }
+*****
+
+***** old.cpp
+        {
+                cameraPos += cameraSpeed * glm::normalize(glm::cross(cameraMoving, up));
+        }
+***** SOURCE.CPP
+        {
+                cameraPos -= cameraSpeed * cameraMovingX;
+                lightPos = cameraPos;
+        }
+*****
+
+***** old.cpp
+        model = glm::mat4(1.0f);
+        model = glm::rotate(model, glm::radians(45.0f) ,glm::vec3(1.0f, 1.0f, 0.0f));
+}
+***** SOURCE.CPP
+        model = glm::mat4(1.0f);
+        //model = glm::rotate(model, glm::radians(45.0f) ,glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f));
+}
+*****
+
+***** old.cpp
+lfele" iránynak */
+        view = glm::lookAt(cameraPos, cameraPos + cameraMoving, up);
+        projection = glm::perspective(glm::radians(45.0f), (float)WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 100.0f);
+***** SOURCE.CPP
+lfele" iránynak */
+        view = glm::lookAt(cameraPos, cameraTarget, up);
+        projection = glm::perspective(glm::radians(45.0f), (float)WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 100.0f);
+*****
+
+***** old.cpp
+        Végül megadom azt, hogy honnan kezdõdnek az értékek a pufferben. Most rögtön, a legelejétõl veszem õket.*/
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+
+***** SOURCE.CPP
+        Végül megadom azt, hogy honnan kezdõdnek az értékek a pufferben. Most rögtön, a legelejétõl veszem õket.*/
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+
+*****
+
+***** old.cpp
+
+        /* Szín attribútum */
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+***** SOURCE.CPP
+
+        /* Normálvektor attribútum */
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(1);
+*****
+
+***** old.cpp
+
+        /* Normálvektor attribútum */
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
+        glEnableVertexAttribArray(2);
+
+        /* Leválasztjuk a vertex array objektumot és a puufert is.*/
+***** SOURCE.CPP
+
+        /* Leválasztjuk a vertex array objektumot és a puufert is.*/
+*****
+
+***** old.cpp
+
+        glUniform3fv(glGetUniformLocation(renderingProgram, "lightPos"), 1, &lightPos[0]);
+***** SOURCE.CPP
+
+        invTmatrix = glm::mat4(1.0f);
+        invTmatrix = glm::inverseTranspose(view * model);
+
+        unsigned int modelViewLoc = glGetUniformLocation(renderingProgram, "invTMatrix");
+        glUniformMatrix4fv(modelViewLoc, 1, GL_FALSE, glm::value_ptr(invTmatrix));
+
+        glUniform3fv(glGetUniformLocation(renderingProgram, "lightPos"), 1, &lightPos[0]);
+*****
+
